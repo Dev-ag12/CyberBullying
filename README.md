@@ -83,16 +83,16 @@ Here a pre-trained BERT model is used for sequence classification using the BERT
 fine-tunes the model for the specific classification task, aiming to achieve high accuracy on the validation set.  
 BERT utilizes attention mechanisms to focus on relevant parts of the input sequence, facilitating more efficient and accurate information processing. Overall, BERT's sophisticated architecture, extensive pre-training, and attention mechanisms contribute to its superior performance in various natural language processing tasks compared to other models such as LSTMs or autoencoders.
 
-1) ### **LSTM with ROBERT Tokenizer**
+2) ### **LSTM with ROBERT Tokenizer**
 
 Here Long Short-Term Memory (LSTM) model is used for text classification, utilizing the RoBERTa tokenizer for tokenization. The LSTM model architecture consists of an embedding layer, an LSTM layer, and a linear layer for classification. While the RoBERTa tokenizer is used for tokenization, the model itself is a custom LSTM, not leveraging RoBERTa's contextualized embeddings. This implementation serves as a foundational example of text classification using LSTMs but may lack the nuanced representations provided by pre-trained models like RoBERTa.
 
-1) ### **ANN with embeddings from custom auto-encoder**
+3) ### **ANN with embeddings from custom auto-encoder**
 
 Here the text embedding extraction is done using a custom trained sequence-to-sequence autoencoder and subsequent classification using an artificial neural network (ANN). First, the trained autoencoder model is loaded and set to evaluation mode. Text data is converted into PyTorch tensors and passed through the encoder part of the autoencoder to extract embeddings. These embeddings are then converted into numpy arrays for downstream tasks. Subsequently, an ANN classifier model is defined and trained on the extracted embeddings. The classifier is then trained using cross-entropy loss & a custom loss function.  
 It does not give a high accuracy as the custom embeddings utilized in the model are extracted from a sequence-to-sequence autoencoder, which may not capture contextual information as effectively as models like BERT. Unlike BERT, which learns representations from large-scale text corpora with bidirectional context, the autoencoder embeddings may lack the rich semantic understanding and contextualization required for accurate classification.
 
-1) ### **LSTM with Glove Embeddings**
+4) ### **LSTM with Glove Embeddings**
 
 Here the word embeddings are generated using pre-trained GloVe embeddings. Initially, it reads the GloVe embeddings file and stores the word embeddings in a dictionary called embeddings\_index. It then initializes an embedding matrix based on the vocabulary from the dataset, where each word's embedding is retrieved from embeddings\_index and added to the matrix. Then an LSTM is trained using both the custom loss and the cross entropy loss . Overall, it demonstrates the integration of pre-trained word embeddings into a neural network training pipeline for natural language processing tasks and has achieved a decent accuracy of 81%.
 
